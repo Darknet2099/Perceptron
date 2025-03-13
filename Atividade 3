@@ -1,0 +1,15 @@
+from sklearn.linear_model import Perceptron
+
+X = [[0, 1, 1, 1], [1, 0, 1, 1], [1, 1, 0, 1], [0, 0, 1, 0], [1, 1, 1, 1], [0, 1, 0, 0], [1, 0, 0, 1], [0, 0, 0, 1]]
+
+
+Y = [0, 1, 0, 1, 1, 0, 0 ,0]
+
+modelo = Perceptron()
+modelo.fit(X, Y)
+
+print("Decisão sobre Comer Fora ou Cozinhar em Casa:")
+testes = [[0,1,1,1], [1,0,1,1], [1,1,0,1], [0,0,1,0], [1,1,1,1], [0,1,0,0], [1,0,0,1], [0,0,0,1]]
+for teste in testes:
+  previsao = modelo.predict([teste])
+  print(f"Cansado: {teste[0]}, Dispõe de ingredientes em casa: {teste[1]}, Restaurante próximo aberto: {teste[2]}, Pagamento recente: {teste[3]}  => Devemos cozinhar em casa? {'Sim' if previsao[0] == 1 else 'Não'}")
